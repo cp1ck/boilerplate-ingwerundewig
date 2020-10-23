@@ -1,0 +1,41 @@
+@import '../../styles/mixins';
+
+.c-user-details {
+
+    &__change-password {
+        margin: 20px 0 0 15px;
+    }
+
+    &__modal .btn,
+    .btn {
+        &.btn-primary {
+            border-radius: 0;
+            background-color: $theme-dark-bg-color;
+            border-color: $theme-dark-bg-color;
+            color: $theme-dark-text-color;
+    
+            &:hover,
+            &:focus {
+                background-color: $theme-light-bg-color;
+                border-color: $theme-light-bg-color;
+                color: $theme-light-text-color;
+                text-decoration: none;
+            }
+        }
+    
+        &.btn-secondary {
+            border-radius: 0;
+            background-color: $theme-light-bg-color;
+            border-color: $theme-light-bg-color;
+            color: $theme-light-text-color;
+    
+            &:hover,
+            &:focus {
+                background-color: $theme-dark-bg-color;
+                border-color: $theme-dark-bg-color;
+                color: $theme-dark-text-color;
+                text-decoration: none;
+            }
+        }
+    }
+}

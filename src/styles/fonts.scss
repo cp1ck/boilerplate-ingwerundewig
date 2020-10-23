@@ -1,0 +1,81 @@
+@import './animate';
+@import './customization';
+
+h1, .like-h1,
+h2, .like-h2,
+h3, .like-h3,
+h4, .like-h4,
+h5, .like-h5 {
+    font-weight: 700;
+    margin-top: 0px;
+    margin-bottom: 10px;
+
+    &.c-subline {
+        margin-bottom: 15px;
+    }
+}
+
+h1, .like-h1 {
+    font-size: 28px;
+
+    @media (min-width: 768px) {
+        font-size: 36px;
+    }
+}
+
+h2, .like-h2 {
+    font-size: 24px;
+
+    @media (min-width: 768px) {
+        font-size: 28px;
+    }
+}
+
+h3, .like-h3 {
+    font-size: 20px;
+
+    @media (min-width: 768px) {
+        font-size: 24px;
+    }
+}
+
+h4, .like-h4 {
+    font-size: 18px;
+
+    @media (min-width: 768px) {
+            font-size: 20px;
+    }
+}
+
+h5, .like-h5 {
+    font-size: 16px;
+
+    @media (min-width: 768px) {
+        font-size: 16px;
+    }
+}
+
+p {
+    margin-bottom: 15px;
+    &:empty {
+        display: none;
+    }
+}
+
+a {
+    text-decoration: none;
+    transition: color $cubic-bezier-off;
+    
+    &:hover,
+    &:focus {
+        transition: color $cubic-bezier-on;
+        text-decoration: underline;
+    }
+}
+
+ul, ol {
+    li {
+        list-style-type: disclosure-closed;
+    }
+}
+

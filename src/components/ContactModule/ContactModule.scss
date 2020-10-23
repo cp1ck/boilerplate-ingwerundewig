@@ -1,0 +1,70 @@
+@import '../../styles/mixins';
+
+.c-contact {
+
+    margin-top: $module-spacing-mobile;
+    margin-bottom: $module-spacing-mobile;
+
+    @media (min-width: $module-spacing-breakpoint) {
+        margin-top: $module-spacing-desktop;
+        margin-bottom: $module-spacing-desktop;
+    }
+    
+    .c-contact {
+        &__form {
+            &-submit {
+                margin: 30px 0 0 auto;
+
+                &:disabled,
+                &:disabled:hover,
+                &[disabled],
+                &[disabled]:hover {
+                    border-color: #ced4da;
+                    color: #ced4da;
+                    background-color: unset;
+                    box-shadow: none;
+                }
+            }
+
+            &-textarea {
+                min-height: 38px;
+            }
+
+            &-error {
+                padding: 0 0.75rem;
+                margin-top: 15px;
+                text-align: center;
+            }
+
+            &-success {
+                margin-bottom: 15px;
+            }
+
+            &-datepicker {
+                width: 100%;
+                &-input {
+                    width: 100%;
+                }
+
+            }
+
+            &-group {
+                margin-bottom: 0;
+            }
+
+            &-control {
+                color: inherit;
+                background: transparent;
+                border-top: 0;
+                border-left: 0;
+                border-right: 0;
+                border-radius: 0;
+        
+                &:focus {
+                    box-shadow: none;
+                    border-color: $theme-light-text-color;
+                }
+            }
+        }
+    }
+}

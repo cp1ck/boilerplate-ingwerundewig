@@ -1,0 +1,32 @@
+@import '../../styles/mixins';
+@import '../../styles/slick';
+
+$slideHeight: 330px;
+
+.c-slick {
+    .slick-track{
+        display: flex;
+        height: $slideHeight;
+    }
+    
+    .slick-slide {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        height:  $slideHeight;
+    }
+    
+    .slide {
+        // padding: 5px;
+
+        .c-img {
+            @media (max-width: 767px) {
+                padding: 0;
+                max-height: 100vw;
+            }
+
+            max-width: $slideHeight;
+            margin: 0 auto;
+        }
+    }
+}

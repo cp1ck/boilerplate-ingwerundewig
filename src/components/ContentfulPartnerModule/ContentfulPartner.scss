@@ -1,0 +1,11 @@
+.c-contentful-partner {
+    max-width: 100px;
+
+    &__logo {
+        display: block;
+        
+        img {
+            width: 100%;
+        }
+    }
+}

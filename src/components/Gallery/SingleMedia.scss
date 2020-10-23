@@ -1,0 +1,22 @@
+@import '../../styles/mixins';
+
+.c-media-module__single-media {
+    margin-top: $module-spacing-mobile;
+    margin-bottom: $module-spacing-mobile;
+
+    @media (min-width: $module-spacing-breakpoint) {
+        margin-top: $module-spacing-desktop;
+        margin-bottom: $module-spacing-desktop;
+    }
+
+    &__img {
+        max-width: 100%;
+    }
+}
+
+.c-columns {
+    .c-media-module__single-media {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+}

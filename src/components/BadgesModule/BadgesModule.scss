@@ -1,0 +1,25 @@
+@import '../../styles/mixins';
+
+.c-badges {
+    margin-top: $module-spacing-mobile;
+    margin-bottom: $module-spacing-mobile;
+
+    @media (min-width: $module-spacing-breakpoint) {
+        margin-top: $module-spacing-desktop;
+        margin-bottom: $module-spacing-desktop;
+    }
+
+    .col {
+        margin: auto;
+        text-align: center;
+
+        .c-logo {
+            max-height: getSpace(20);
+            margin: getSpace(2);
+    
+            &:hover {
+                animation: heartbeat 1.5s ease-in-out both;
+            }
+        }
+    }
+}

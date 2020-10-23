@@ -1,0 +1,52 @@
+@import '../../styles/mixins';
+
+body {
+    padding-top: 79px;
+}
+
+.c-header {
+    font-weight: 700;
+    z-index: 100;
+
+    &__navbar {
+        background-color: $header-bg-color;
+
+        .navbar {
+            padding: 0.5rem 0;
+        }
+    }
+
+    &__brand-logo {
+        width: 80px;
+        max-width: 100%;
+
+        @media (min-width: 768px) {
+            width: 80px;
+        }
+    }
+    
+    &__brand-name {
+        padding-left: getSpace(4);
+    }
+    
+    &__navigation.navbar-nav {
+        .navigation__item.nav-link {
+            font-size: initial;
+            color: $header-text-color;
+            text-decoration: none;
+            text-align: center;
+            
+            &.active {
+                color: $header-text-active-color;
+            }
+            
+            &:hover {
+                color: $header-text-hover-color;
+            }
+        }
+    }
+
+    &__socials.navbar-nav {
+        text-align: center;
+    }
+}

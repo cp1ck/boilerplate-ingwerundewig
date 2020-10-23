@@ -1,0 +1,60 @@
+@import '../../styles/mixins';
+
+.c-team {
+    margin-top: $module-spacing-mobile;
+    margin-bottom: $module-spacing-mobile;
+
+    @media (min-width: $module-spacing-breakpoint) {
+        margin-top: $module-spacing-desktop;
+        margin-bottom: $module-spacing-desktop;
+    }
+    
+    .slick-slider {
+        .slick-arrow {
+        
+            &:before {
+                color: $theme-dark-bg-color;
+            }
+        
+            &:hover:before,
+            &:hover:after {
+                color: $theme-dark-text-color;
+            }
+        }
+        
+        .slick-prev,
+        .slick-next {
+            width: 4%;
+
+            @media (min-width: 992px) and (max-width: 1199px) {
+                width: 3%;
+            }
+        }
+        
+        .slick-prev {
+            left: -4%;
+            text-align: left;
+
+            @media (min-width: 992px) and (max-width: 1199px) {
+                left: -3%;
+            }
+        
+            &:before {
+                content: "\f053";
+            }
+        }
+        
+        .slick-next {
+            right: -4%;
+            text-align: right;
+
+            @media (min-width: 992px) and (max-width: 1199px) {
+                right: -3%;
+            }
+        
+            &:before {
+                content: "\f054";
+            }
+        }
+    }
+}

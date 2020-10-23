@@ -1,0 +1,12 @@
+@import '../../styles/mixins';
+
+.c-page-not-found {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    
+    &__message {
+        text-align: center;;
+    }
+}

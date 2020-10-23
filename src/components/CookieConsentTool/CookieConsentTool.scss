@@ -1,0 +1,90 @@
+@import '../../styles/mixins';
+
+.c-cookie {
+    padding: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+
+    &__wrapper {
+        margin-top: 10px;
+
+        label {
+            margin-bottom: 0;
+            font-weight: 400;
+            font-size: 14px;
+        }
+    }
+
+    &__necessary, &__statistic  {
+        padding-right: 20px;
+    }
+
+    &__checkbox {
+        margin-right: 10px;
+    }
+
+    &-light {
+        background-color: $theme-light-bg-color;
+        color: $theme-light-text-color;
+
+        .c-cookie__btn {
+            background-color: $theme-dark-bg-color;
+            color: $theme-dark-text-color;
+        }
+
+        .c-cookie__link {
+            color: rgba($theme-light-text-color,.5);
+
+            &:hover {
+                color: rgba($theme-light-text-color,1);
+            }
+        }
+    }
+
+    &-dark {
+        background-color: $theme-dark-bg-color;
+        color: $theme-dark-text-color;
+
+        .c-cookie__btn {
+            background-color: $theme-light-bg-color;
+            color: $theme-light-text-color;
+        }
+
+        .c-cookie__link {
+            color: rgba($theme-dark-text-color,.5);
+
+            &:hover {
+                color: rgba($theme-dark-text-color,1);
+            }
+        }
+    }
+
+    &__content {
+        @media (max-width: 575px) {
+            margin-bottom: 15px;
+        }
+
+        .c-cookie__link {
+            margin-left: 5px;
+        }
+    }
+
+    &__btn {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        padding: getSpace(2) getSpace(3);
+        border-radius: 0;
+        font-size: 14px;
+        font-weight: 700;
+        border: 0;
+        outline: 0;
+        width: 100%;
+    }
+}

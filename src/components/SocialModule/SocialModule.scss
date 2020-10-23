@@ -1,0 +1,123 @@
+@import '../../styles/mixins';
+
+.c-social-wall {
+  margin-top: $module-spacing-mobile;
+  margin-bottom: $module-spacing-mobile;
+
+  @media (min-width: $module-spacing-breakpoint) {
+      margin-top: $module-spacing-desktop;
+      margin-bottom: $module-spacing-desktop;
+  }
+  
+  &-grid {
+    display: flex;
+    width: auto;
+    margin: 0 -5px;
+
+    &__column {
+      position: relative;
+      padding: 0 5px;
+    }
+  }
+
+  &-item {
+    margin-bottom: 10px;
+    border-radius: 0;
+
+    &__image {
+      width: 100%;
+    }
+
+    &__album-wrapper {
+      display: flex;
+      padding-top: 5px;
+      padding-left: 5px;
+      padding-right: 5px;
+      flex-wrap: wrap;
+    }
+
+    &__album-image {
+      flex: 0 50%;
+      padding: 5px;
+      max-width: 50%;
+
+      &:last-child,
+      &:nth-last-child(2):nth-child(odd) {
+        padding-bottom: 0;
+      }
+    }
+
+    .svg-inline--fa {
+      width: getSpace(4);
+    }
+
+    .fa-facebook-square, .facebook-pin {
+      color: $facebook;
+    }
+
+    .fa-instagram, .instagram-pin {
+      color: $instagram-violet;
+    }
+    .fa-twitter-square, .twitter-pin {
+      color: $twitter;
+    }
+
+    .fa-thumbtack {
+      position: absolute;
+      top: getSpace(1);
+      right: getSpace(1);
+      transform: rotate(45deg);
+    }
+
+    &__overlay {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    &__inner {
+      position: relative;
+      pointer-events: none;
+
+      a {
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__loadmore {
+    margin: 0 auto;
+    display: block;
+    width: 50px;
+    height: 50px;
+    // border: none;
+    border-radius: 50%;
+    background: $white;
+    font-size: 20px;
+    border-color: $darkPrimary;
+    color: $darkPrimary;
+
+    svg {
+      transform: rotate(0deg);
+      transition: all $cubic-bezier-off;
+    }
+
+    &:hover {
+      transition: all $cubic-bezier-on;
+      border-color: $redDark;
+      svg {
+        color: $redDark;
+        transform: rotate(180deg);
+      }
+
+      &:active {
+        svg {
+          transform: rotate(360deg);
+          transition: all $cubic-bezier-on;
+        }
+      }
+    }
+  }
+}

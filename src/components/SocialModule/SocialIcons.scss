@@ -1,0 +1,32 @@
+@import '../../styles/mixins';
+
+.c-socials {
+    margin: 0 -.5rem;
+
+    &__item.nav-link {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1;
+        padding: .5rem;
+        
+        .fab {
+            color: $socials-color;
+        }
+
+        .fa-instagram{
+            &:hover {
+                color: $instagram
+            }
+        }
+        .fa-facebook{
+            &:hover {
+                color: $facebook
+            }
+        }
+        .fa-twitter{
+            &:hover {
+                color: $twitter
+            }
+        }
+    }
+}

@@ -1,0 +1,36 @@
+@import '../../styles/mixins';
+
+.c-instagram {
+  margin-top: $module-spacing-mobile;
+  margin-bottom: $module-spacing-mobile;
+
+  @media (min-width: $module-spacing-breakpoint) {
+      margin-top: $module-spacing-desktop;
+      margin-bottom: $module-spacing-desktop;
+  }
+
+  &__grid{
+    display: flex;
+    width: auto;
+    margin: -5px;
+
+    &-column {
+      background-clip: padding-box;
+    }
+
+    .carousel, .slide {
+      padding: 5px;
+      transition: all .2s ease-in-out;
+
+      &:hover {
+        transition: all .3s ease-in-out;
+        transform: scale(1.02);
+      }
+
+      img {
+        margin: 0;
+        width: 100%;
+      }
+    }
+  }
+}

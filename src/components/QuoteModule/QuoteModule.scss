@@ -1,0 +1,50 @@
+@import '../../styles/mixins';
+
+.c-quote {
+    margin-top: $module-spacing-mobile;
+    margin-bottom: $module-spacing-mobile;
+
+    @media (min-width: $module-spacing-breakpoint) {
+        margin-top: $module-spacing-desktop;
+        margin-bottom: $module-spacing-desktop;
+    }
+
+    &__text {
+        position: relative;
+        padding: 0 getSpace(10);
+        font-size: 1.2em;
+
+        &:before,
+        &:after {
+            position: absolute;
+            font-size: getSpace(4);
+            line-height: 1;
+            font-weight: 900;
+            font-family: "Font Awesome 5 Free";
+            display: inline-block;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+        }
+
+        &:before {
+            content: "\f10d";
+            left: 0;
+            top: 0;
+        }
+
+        &:after {
+            content: "\f10e";
+            right: 0;
+            bottom: 0;
+        }
+    }
+
+    &__author {
+        padding: 0 getSpace(10);
+        font-style: italic;
+        margin: 0;
+        text-align: right;
+        font-size: 14px;
+    }
+}

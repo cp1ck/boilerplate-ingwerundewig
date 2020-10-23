@@ -1,0 +1,12 @@
+$regular: 5px;
+
+@function getSpace($multiplier: 0.5) {
+    $isInt: ceil($multiplier) - $multiplier == 0;
+
+    @if $isInt or $multiplier == 0.5 or $multiplier == -0.5 {
+        $space: $multiplier * $regular;
+        @return $space;
+    }
+
+    @return $regular;
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="70px" viewBox="0 0 60 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop---Home-V1.5" transform="translate(-165.000000, -2685.000000)">
+            <g id="Logo-Wall" transform="translate(0.000000, 2650.000000)">
+                <rect id="Rectangle"  opacity="0.896600632" x="0" y="0" width="1440" height="140"></rect>
+                <g id="Logos" transform="translate(165.000000, 35.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                    <g id="html5">
+                        <path d="M0,0 L5.453125,61.84375 L29.921875,70 L54.546875,61.84375 L60,0 L0,0 Z M48.15625,19.984375 L19.4375,19.984375 L20.078125,27.703125 L47.515625,27.703125 L45.390625,50.890625 L30.09375,55.109375 L30.09375,55.15625 L29.921875,55.15625 L14.5,50.890625 L13.5625,39.046875 L21.015625,39.046875 L21.5625,45 L29.921875,47.265625 L38.3125,45 L39.25,35.28125 L13.171875,35.28125 L11.171875,12.53125 L48.84375,12.53125 L48.15625,19.984375 L48.15625,19.984375 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

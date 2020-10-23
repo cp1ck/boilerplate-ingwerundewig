@@ -1,0 +1,12 @@
+@import '../../styles/mixins';
+
+.c-accordion-item {
+    &__img {
+        max-width: 100%;
+    }
+
+    button {
+        width: 100%;
+        text-align: left;
+    }
+}
