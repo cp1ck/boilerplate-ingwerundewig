@@ -13,8 +13,6 @@ Parameters:
     Type: String
   EmailService:
     Type: String
-  AuthenticationService:
-    Type: String
   GitHubOauthToken:
     Type: String
     NoEcho: true
@@ -216,7 +214,6 @@ Resources:
                   REACT_APP_CONTENTFUL_API_KEY: ${ContentfulApiKey}
                   REACT_APP_CONTENTFUL_SPACE_ID: ${ContentfulSpaceId}
                   REACT_APP_NOTIFICATION_SERVICE_ENDPOINT: ${EmailService}
-                  REACT_APP_AUTH_SERVICE_ENDPOINT: ${AuthenticationService}
               phases:
                 build:
                   commands:

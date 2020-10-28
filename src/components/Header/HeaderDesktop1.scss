@@ -1,12 +1,13 @@
 @import '../../styles/mixins';
 
 body {
-    padding-top: 79px;
+    padding-top: 150px!important;
 }
 
 .c-header {
     font-weight: 700;
     z-index: 100;
+    border-bottom: 3px solid #BBBBBB;
 
     &__navbar {
         background-color: $header-bg-color;
@@ -21,7 +22,7 @@ body {
         max-width: 100%;
 
         @media (min-width: 768px) {
-            width: 80px;
+            width: 150px;
         }
     }
     
@@ -30,11 +31,13 @@ body {
     }
     
     &__navigation.navbar-nav {
+        // padding-right: 200px;
         .navigation__item.nav-link {
-            font-size: initial;
+            font-size: 20px;
             color: $header-text-color;
             text-decoration: none;
             text-align: center;
+            margin-right: 15px;
             
             &.active {
                 color: $header-text-active-color;

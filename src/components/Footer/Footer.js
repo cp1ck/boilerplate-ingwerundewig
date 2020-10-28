@@ -49,13 +49,15 @@ const Footer = ({
                                 ))}
                             </ul>
                         )}
+                        <a href="mailto: ingwerschnaps@posteo.de">ingwerschnaps@posteo.de</a>
+                        <br />
                         {socials && (
                             <SocialIcons className="c-footer__socials" socials={socials} />
                         )}
                     </div>
                 </Col>
                 <Col>
-                    <ContentfulPartner className="c-footer__contentful-partner" />
+                    <ContentfulPartner className="c-footer__contentful-partner" logoType="mono" />
                 </Col>
             </Row>
         </Container>

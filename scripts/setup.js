@@ -59,7 +59,8 @@ const createEnvironmentFiles = async (spaceId, accessToken, cmaToken) => {
     try {
         console.log('Writing config file...');
         const repoName = await getRepoName();
-        const customerName = repoName.replace('master-', '');
+        // const customerName = repoName.replace('master-', '');
+        const customerName = 'ingwerundewig';
         const configFiles = ['.env', `.env.${customerName}`].map(file => path.join(__dirname, '..', file));
 
         const fileContents = `${[
@@ -103,7 +104,7 @@ const createStacks = async (spaceId, accessToken, previewToken, githubToken) => 
     try {
         const repoName = await getRepoName();
         const pipelineFile = await getPipelineFile();
-        const customerName = repoName.replace('master-', '');
+        const customerName = 'ingwerundewig';
         const stackName = `${customerName.toUpperCase()}-WEBSITE`;
 
         console.log('Start CloudFormation Stacks creation');

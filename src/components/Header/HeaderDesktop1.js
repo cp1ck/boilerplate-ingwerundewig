@@ -41,7 +41,7 @@ const HeaderDesktop = ({
                             {navigation && (
                                 <>
                                     <Navbar.Collapse id="basic-navbar-nav">
-                                        <Nav className="c-header__navigation mr-auto" defaultActiveKey={activeKey}>
+                                        <Nav className="c-header__navigation ml-auto" defaultActiveKey={activeKey}>
                                             <NavigationMapping
                                                 navigation={navigation}
                                                 onCategoryChange={onCategoryChange}
