@@ -54,7 +54,7 @@ class HeaderMobile extends React.Component {
                                 {navigation && (
                                     <>
                                         {navigation.length > 0 && (
-                                            <Nav className="c-header-mobile__navigation ml-auto" defaultActiveKey={activeKey}>
+                                            <Nav className="c-header-mobile__navigation ml-auto" activeKey={activeKey}>
                                                 <svg
                                                     className={!showNav ? 'ham hamRotate' : 'ham hamRotate active'}
                                                     viewBox="0 0 100 100"
