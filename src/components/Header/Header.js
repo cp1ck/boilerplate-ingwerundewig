@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import PropTypes from 'prop-types';
 import { isMobile } from 'react-device-detect';
 
-import HeaderDesktop from './HeaderDesktop1';
-import HeaderMobile from './HeaderMobile2';
+const HeaderDesktop = lazy(() => import('./HeaderDesktop1'));
+const HeaderMobile = lazy(() => import('./HeaderMobile2'));
 
 
 const Header = ({
