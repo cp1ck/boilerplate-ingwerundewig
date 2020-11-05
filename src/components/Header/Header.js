@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { isMobile } from 'react-device-detect';
 
 const HeaderDesktop = lazy(() => import('./HeaderDesktop1'));
-const HeaderMobile = lazy(() => import('./HeaderMobile2'));
+const HeaderMobile = lazy(() => import('./HeaderMobile1'));
 
 
 const Header = ({
