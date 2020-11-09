@@ -91,11 +91,11 @@ class Root extends React.Component {
         const path = pathname.substr(1);
         let content = null;
         // Nur solange wir kein Extension dafür haben
-        if (path === 'shop') {
-            content = [{ id: 0, className: 'PopUpStore' }];
-        } else {
-            content = await this.repository.getContent(path);
-        }
+        // if (path === 'shop') {
+        //     content = [{ id: 0, className: 'PopUpStore' }];
+        // } else {
+        content = await this.repository.getContent(path);
+        // }
 
         const {
             header,
