@@ -49,7 +49,7 @@ const Footer = ({
                                 ))}
                             </ul>
                         )}
-                        <a href="mailto: ingwerschnaps@posteo.de">ingwerschnaps@posteo.de</a>
+                        <a href="mailto: contact@ingwerundewig.de">contact@ingwerundewig.de</a>
                         <br />
                         {socials && (
                             <SocialIcons className="c-footer__socials" socials={socials} />
