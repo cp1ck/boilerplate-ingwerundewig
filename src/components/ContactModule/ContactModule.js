@@ -6,15 +6,12 @@ import {
     FormGroup,
     Spinner
 } from 'react-bootstrap';
-import DatePicker, { registerLocale } from 'react-datepicker';
-import de from 'date-fns/locale/de';
 
 import ContactService from '../../services/ContactService';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './ContactModule.scss';
 
-registerLocale('de', de);
 
 class ContactModule extends React.Component {
     constructor(props) {
@@ -174,17 +171,6 @@ class ContactModule extends React.Component {
                                     placeholder="Deine Nachricht"
                                     value={form.message}
                                     className="c-contact__form-control c-contact__form-textarea"
-                                />
-                            </FormGroup>
-                            <FormGroup className="c-contact__form-group">
-                                <DatePicker
-                                    className="c-contact__form-control form-control c-contact__form-datepicker-input"
-                                    wrapperClassName="c-contact__form-datepicker"
-                                    dateFormat="dd.MM.yyyy"
-                                    locale="de"
-                                    placeholderText="Datum"
-                                    selected={form.date}
-                                    onChange={date => this.handleDateChange(date)}
                                 />
                             </FormGroup>
                             <FormGroup className="c-contact__form-group">
