@@ -1,14 +1,19 @@
 import React, { Fragment, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import TagManager from 'react-gtm-module';
 
 import Root from './views/Root';
 import PageNotFound from './components/PageNotFound/PageNotFound';
 import PageLoader from './components/LoaderModule/PageLoader';
-// import AuthHeader from './components/Authentication/AuthHeader';
-// import Login from './components/Authentication/Login';
-// import Register from './components/Authentication/Register';
-// import UserProfile from './components/Authentication/UserProfile';
 
+const {
+    REACT_APP_GTM_ID
+} = process.env;
+
+TagManager.initialize({
+    gtmId: REACT_APP_GTM_ID,
+    dataLayerName: 'PageDataLayer'
+});
 
 const App = () => (
     <Fragment>
