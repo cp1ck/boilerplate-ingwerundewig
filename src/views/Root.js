@@ -14,6 +14,7 @@ import PageNotFound from '../components/PageNotFound/PageNotFound';
 import { trackPage } from '../helpers/cookieHelpers';
 
 import '../App.scss';
+import PaypalButton from '../components/PaypalButton/PaypalButton';
 
 const AccordionModule = lazy(() => import('../components/AccordionModule/AccordionModule'));
 const BadgesModule = lazy(() => import('../components/BadgesModule/BadgesModule'));
@@ -31,7 +32,6 @@ const RichTextModule = lazy(() => import('../components/RichTextModule/RichTextM
 const TwoColumnsModule = lazy(() => import('../components/ColumnsContent/TwoColumnsModule'));
 const ThreeColumnsModule = lazy(() => import('../components/ColumnsContent/ThreeColumnsModule'));
 const FourColumnsModule = lazy(() => import('../components/ColumnsContent/FourColumnsModule'));
-const PodcastModule = lazy(() => import('../components/PodcastModule/PodcastModule'));
 const ScriptModule = lazy(() => import('../components/ScriptModule/ScriptModule'));
 const TeamModule = lazy(() => import('../components/TeamModule/TeamModule'));
 const TeaserModule = lazy(() => import('../components/TeaserModule/TeaserModule'));
@@ -42,7 +42,6 @@ const {
     REACT_APP_CONTENTFUL_API_KEY,
     REACT_APP_CONTENTFUL_SPACE_ID,
 } = process.env;
-
 
 class Root extends React.Component {
     constructor(props) {
@@ -312,6 +311,14 @@ class Root extends React.Component {
                         centerRight={item.getRightCenterColumn() ? item.getRightCenterColumn().map(entry => this.getModule(entry, true)) : null}
                         right={item.getRightColumn() ? item.getRightColumn().map(entry => this.getModule(entry, true)) : null}
                         sizes={item.getColumnsSize()}
+                    />
+                );
+            case 'Paypal':
+                return (
+                    <PaypalButton
+                        currency="EUR"
+                        total="100"
+
                     />
                 );
             case 'ScriptModule':

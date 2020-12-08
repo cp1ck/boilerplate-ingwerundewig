@@ -39,6 +39,7 @@
     "react-markdown": "^5.0.0",
     "react-masonry-css": "^1.0.14",
     "react-particles-js": "^2.7.0",
+    "react-paypal-button-v2": "^2.6.2",
     "react-photo-gallery": "^8.0.0",
     "react-player": "^1.15.2",
     "react-resize-detector": "^4.2.1",

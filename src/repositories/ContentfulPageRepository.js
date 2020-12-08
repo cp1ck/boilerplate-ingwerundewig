@@ -174,6 +174,8 @@ export default class ContentfulPageRepository {
                                 break;
                         }
                         break;
+                    case 'paypal':
+                        return { className: 'Paypal' };
                     case 'quoteModule': {
                         return new QuoteModule(entry);
                     }
