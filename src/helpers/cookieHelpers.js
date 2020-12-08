@@ -21,7 +21,8 @@ const applyCookieRules = () => {
     const marketingCookie = readCookie('marketing');
     if (statisticCookie === 'true' && REACT_APP_GTM_ID) {
         TagManager.initialize({
-            gtmId: REACT_APP_GTM_ID
+            gtmId: REACT_APP_GTM_ID,
+            dataLayerName: 'PageDataLayer'
         });
     }
     if (marketingCookie === 'true' && REACT_APP_FBP_ID) {
