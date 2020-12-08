@@ -10,10 +10,12 @@ const {
     REACT_APP_GTM_ID
 } = process.env;
 
-TagManager.initialize({
-    gtmId: REACT_APP_GTM_ID,
-    dataLayerName: 'PageDataLayer'
-});
+if (REACT_APP_GTM_ID) {
+    TagManager.initialize({
+        gtmId: REACT_APP_GTM_ID,
+        dataLayerName: 'PageDataLayer'
+    });
+}
 
 const App = () => (
     <Fragment>
