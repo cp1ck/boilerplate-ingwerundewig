@@ -20,7 +20,9 @@ const applyCookieRules = () => {
     const statisticCookie = readCookie('statistic');
     const marketingCookie = readCookie('marketing');
     if (statisticCookie === 'true' && REACT_APP_GTM_ID) {
-        // outsourced GTM init to Root.js
+        TagManager.initialize({
+            gtmId: REACT_APP_GTM_ID
+        });
     }
     if (marketingCookie === 'true' && REACT_APP_FBP_ID) {
         ReactPixel.init(REACT_APP_FBP_ID);
@@ -31,12 +33,10 @@ const trackPage = (path) => {
     const statisticCookie = readCookie('statistic');
     const marketingCookie = readCookie('marketing');
     if (statisticCookie === 'true') {
-        console.log('TRACK:', path);
         const tagManagerArgs = {
             dataLayer: {
                 page: path
-            },
-            dataLayerName: 'PageDataLayer'
+            }
         };
         TagManager.dataLayer(tagManagerArgs);
     }
