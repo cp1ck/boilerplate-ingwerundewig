@@ -14,7 +14,7 @@ import PageNotFound from '../components/PageNotFound/PageNotFound';
 import { trackPage } from '../helpers/cookieHelpers';
 
 import '../App.scss';
-import PaypalButton from '../components/PaypalButton/PaypalButton';
+import Shop from '../components/Shop/Shop';
 
 const AccordionModule = lazy(() => import('../components/AccordionModule/AccordionModule'));
 const BadgesModule = lazy(() => import('../components/BadgesModule/BadgesModule'));
@@ -315,11 +315,7 @@ class Root extends React.Component {
                 );
             case 'Paypal':
                 return (
-                    <PaypalButton
-                        currency="EUR"
-                        total="100"
-
-                    />
+                    <Shop />
                 );
             case 'ScriptModule':
                 return (
