@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
-import { PayPalButton } from 'react-paypal-button-v2';
-import { Container, Row, Col } from 'react-bootstrap';
 
-
-import Button from '../Button/Button';
-import PaypalButton from './PaypalButton';
+import Cart from './Cart';
+import Product from './Product';
 
 import './Shop.scss';
 
@@ -18,65 +15,6 @@ const products = [
     }
 ];
 
-const Product = ({
-    onClick, product
-}) => {
-    const {
-        name, price, imgUrl, description, id
-    } = product;
-    const [quantity, setQuantity] = useState(1);
-
-    const onQuantityChange = (event) => {
-        setQuantity(Number(event.target.value));
-    };
-
-    return (
-        <div className="c-product">
-            <Row>
-                <Col md="4">
-                    <img
-                        alt="Eine Flasche Ingwer&Ewig"
-                        src={imgUrl}
-                    />
-                </Col>
-                <Col md="8">
-                    <h2>{name}</h2>
-                    <div>
-                        {`${price} €`}
-                    </div>
-                    <div>{description}</div>
-                    <div>
-                        <label htmlFor="quantity">
-Anzahl
-                            <input type="number" id="quantity" value={quantity} onChange={onQuantityChange} />
-                        </label>
-
-                        <button
-                            onClick={() => onClick({ ...product, quantity })}
-                            type="button"
-                        >
-                    In Warenkorb
-                        </button>
-                    </div>
-                </Col>
-            </Row>
-        </div>
-    );
-};
-
-const Cart = ({ cart }) => {
-    console.log(cart);
-    return (
-        <div className="c-shop-cart">
-            <PaypalButton
-                currency="EUR"
-                total="100"
-            />
-        </div>
-    );
-};
-
-
 const Shop = () => {
     const [cart, setCart] = useState([]);
 
@@ -84,29 +22,60 @@ const Shop = () => {
         const itemIndex = cart.findIndex(element => element.id === item.id);
         if (itemIndex === -1) {
             setCart([...cart, item]);
-            return;
+        } else {
+            const newCart = [...cart];
+            const oldItem = cart[itemIndex];
+            const quantity = oldItem.quantity + item.quantity;
+            newCart[itemIndex] = {
+                ...oldItem,
+                quantity
+            };
+            setCart(newCart);
         }
-        const newCart = [...cart];
-        const oldItem = cart[itemIndex];
-        newCart[itemIndex] = {
-            ...oldItem,
-            quantity: (oldItem.quantity + item.quantity)
-        };
-        setCart(newCart);
+    };
+
+    const removeFromCart = (item) => {
+        const itemIndex = cart.findIndex(element => element.id === item.id);
+        if (itemIndex !== -1) {
+            const newCart = [...cart];
+            newCart.splice(itemIndex, 1);
+            setCart(newCart);
+        }
+    };
+
+    const updateQuantity = (item, event) => {
+        const itemIndex = cart.findIndex(element => element.id === item.id);
+        if (itemIndex === -1) return;
+        const newQuantity = Number(event.target.value);
+        if (newQuantity === 0) {
+            removeFromCart(item);
+        } else {
+            const newCart = [...cart];
+            const oldItem = cart[itemIndex];
+            const quantity = newQuantity;
+            newCart[itemIndex] = {
+                ...oldItem,
+                quantity
+            };
+            setCart(newCart);
+        }
     };
 
     return (
         <>
-            <h1>Welcome to my shop!</h1>
             {
                 products && products.map(product => (
                     <Product
-                        onClick={item => addToCart(item)}
+                        onAddToCart={addToCart}
                         product={product}
                     />
                 ))
             }
-            <Cart cart={cart} />
+            <Cart
+                cart={cart}
+                onRemoveFromCart={removeFromCart}
+                onUpdateQuantity={updateQuantity}
+            />
         </>
     );
 };

@@ -6,3 +6,12 @@
         display: flex;
     }
 }
+
+.c-shop-cart {
+    .paypal-buttons {
+        z-index: 0;
+    }
+    table {
+        width: 100%;
+    }
+}
