@@ -313,9 +313,11 @@ class Root extends React.Component {
                         sizes={item.getColumnsSize()}
                     />
                 );
-            case 'Paypal':
+            case 'Shop':
                 return (
-                    <Shop />
+                    <Shop
+                        paypalClientId={item.getPaypalClientId()}
+                    />
                 );
             case 'ScriptModule':
                 return (

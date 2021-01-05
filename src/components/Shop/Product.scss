@@ -1,0 +1,27 @@
+@import '../../styles/mixins';
+
+.c-product {
+    &__image {
+        margin: auto;
+        display: flex;
+    }
+
+    &-details > *{
+        margin-bottom:20px;
+     }
+
+    &-controls {
+        text-align: center;
+        &__quantity-input {
+            vertical-align: top;
+            display: inline;
+            width: 60px;
+            height: 47.1px;
+            margin-right: 5px;
+        }
+
+        &__button {
+            display: inline!important;
+        }
+    }
+}

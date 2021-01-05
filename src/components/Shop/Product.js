@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import { Row, Col } from 'react-bootstrap';
 
+import './Product.scss';
+
 const Product = ({
     onAddToCart, product
 }) => {
@@ -21,32 +23,38 @@ const Product = ({
                 <Col md="4">
                     <img
                         alt="Eine Flasche Ingwer&Ewig"
+                        className="c-product__image"
                         src={imgUrl}
                     />
                 </Col>
                 <Col md="8">
-                    <h2>{name}</h2>
-                    <div>
-                        {`${price} €`}
+                    <div className="c-product-details">
+                        <h2 className="c-product-details__title">
+                            {`${name} - ${price} €`}
+                        </h2>
+                        <div className="c-product-details_text">
+                            {description}
+                        </div>
                     </div>
-                    <div>{description}</div>
-                    <div>
-                        <label htmlFor="quantity">
-                            <input
-                                type="number"
-                                id={`product-quantity-${id}`}
-                                value={quantity}
-                                onChange={onQuantityChange}
-                            />
-                        </label>
+                    <form className="c-product-controls">
+                        <input
+                            aria-label="Anzahl"
+                            className="c-product-controls__quantity-input"
+                            id={`product-quantity-${id}`}
+                            onChange={onQuantityChange}
+                            type="number"
+                            value={quantity}
+                            min="1"
+                        />
 
                         <button
+                            className="c-product-controls__button c-button c-button-light"
                             onClick={() => onAddToCart({ ...product, quantity })}
                             type="button"
                         >
                     In den Warenkorb
                         </button>
-                    </div>
+                    </form>
                 </Col>
             </Row>
         </div>

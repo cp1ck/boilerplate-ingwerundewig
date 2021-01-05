@@ -15,10 +15,11 @@ const products = [
     }
 ];
 
-const Shop = () => {
+const Shop = ({ paypalClientId }) => {
     const [cart, setCart] = useState([]);
 
     const addToCart = (item) => {
+        if (item.quantity <= 0) return;
         const itemIndex = cart.findIndex(element => element.id === item.id);
         if (itemIndex === -1) {
             setCart([...cart, item]);
@@ -47,7 +48,7 @@ const Shop = () => {
         const itemIndex = cart.findIndex(element => element.id === item.id);
         if (itemIndex === -1) return;
         const newQuantity = Number(event.target.value);
-        if (newQuantity === 0) {
+        if (newQuantity <= 0) {
             removeFromCart(item);
         } else {
             const newCart = [...cart];
@@ -62,7 +63,7 @@ const Shop = () => {
     };
 
     return (
-        <>
+        <div className="c-shop">
             {
                 products && products.map(product => (
                     <Product
@@ -75,8 +76,9 @@ const Shop = () => {
                 cart={cart}
                 onRemoveFromCart={removeFromCart}
                 onUpdateQuantity={updateQuantity}
+                paypalClientId={paypalClientId}
             />
-        </>
+        </div>
     );
 };
 

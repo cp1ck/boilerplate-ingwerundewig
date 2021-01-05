@@ -15,6 +15,7 @@ import MediaModule from '../models/contentful/MediaModule';
 import Metadata from '../models/contentful/Metadata';
 import QuoteModule from '../models/contentful/QuoteModule';
 import ScriptModule from '../models/contentful/ScriptModule';
+import Shop from '../models/contentful/Shop';
 import TableModule from '../models/contentful/TableModule';
 import Team from '../models/contentful/Team';
 import TeaserModule from '../models/contentful/TeaserModule';
@@ -174,8 +175,8 @@ export default class ContentfulPageRepository {
                                 break;
                         }
                         break;
-                    case 'paypal':
-                        return { className: 'Paypal' };
+                    case 'shop':
+                        return new Shop(entry);
                     case 'quoteModule': {
                         return new QuoteModule(entry);
                     }
