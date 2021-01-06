@@ -18,17 +18,26 @@ const shippingOptions = [
 ];
 
 const Cart = ({
-    cart, onRemoveFromCart, onUpdateQuantity, paypalClientId
+    cart, onClearCart, onRemoveFromCart, onUpdateQuantity
 }) => {
     const [delivery, setDelivery] = useState('pickup');
     const [oldEnough, setOldEnough] = useState(false);
+    const [shoppingSuccess, setShoppingSuccess] = useState(false);
 
     const onCheckboxChange = (event) => {
         const { checked } = event.target;
         setOldEnough(checked);
     };
 
+    const handlePaymentSuccess = (details) => {
+        onClearCart();
+        setShoppingSuccess(true);
+        const { id, payer, purchase_units } = details;
+        alert(`Transaction completed by ${payer.name.given_name}`);
+    };
+
     if (cart && cart.length > 0) {
+        if (shoppingSuccess) setShoppingSuccess(false);
         const subTotal = cart.reduce((acc, item) => item.price * item.quantity, 0);
         const shippingCosts = delivery === 'shipping' ? 5.9 : 0;
         const total = subTotal + shippingCosts;
@@ -165,7 +174,7 @@ Ich bin über 18 Jahre alt.
                     <PaypalButton
                         cart={cart}
                         currency="EUR"
-                        paypalClientId={paypalClientId}
+                        onSuccess={handlePaymentSuccess}
                         subTotal={subTotal}
                         total={total}
                         shippingCosts={shippingCosts}
@@ -175,11 +184,22 @@ Ich bin über 18 Jahre alt.
             </div>
         );
     }
+
+    if (shoppingSuccess) {
+        return (
+            <div className="c-cart">
+                <h2>Danke für deinen Einkauf bei Ingwer&Ewig!</h2>
+                <div>Du bekommst in Kürze eine Bestellbestätigung per Email.</div>
+            </div>
+        );
+    }
+
     return null;
 };
 
 Cart.propTypes = {
     cart: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+    onClearCart: PropTypes.func.isRequired,
     onRemoveFromCart: PropTypes.func.isRequired,
     onUpdateQuantity: PropTypes.func.isRequired,
 };

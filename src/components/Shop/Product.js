@@ -9,7 +9,7 @@ const Product = ({
     onAddToCart, product
 }) => {
     const {
-        name, price, imgUrl, description, id
+        name, price, image, description, id
     } = product;
     const [quantity, setQuantity] = useState(1);
 
@@ -22,9 +22,9 @@ const Product = ({
             <Row>
                 <Col md="4">
                     <img
-                        alt="Eine Flasche Ingwer&Ewig"
+                        alt={image.getAlt()}
                         className="c-product__image"
-                        src={imgUrl}
+                        src={image.getImageUrl()}
                     />
                 </Col>
                 <Col md="8">

@@ -1,21 +1,12 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import Cart from './Cart';
 import Product from './Product';
 
 import './Shop.scss';
 
-const products = [
-    {
-        id: 1,
-        name: 'Ingwer&Ewig Schnaps',
-        price: 15,
-        imgUrl: 'https://via.placeholder.com/200',
-        description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
-    }
-];
-
-const Shop = ({ paypalClientId }) => {
+const Shop = ({ products }) => {
     const [cart, setCart] = useState([]);
 
     const addToCart = (item) => {
@@ -33,6 +24,10 @@ const Shop = ({ paypalClientId }) => {
             };
             setCart(newCart);
         }
+    };
+
+    const clearCart = () => {
+        setCart([]);
     };
 
     const removeFromCart = (item) => {
@@ -74,12 +69,20 @@ const Shop = ({ paypalClientId }) => {
             }
             <Cart
                 cart={cart}
+                onClearCart={clearCart}
                 onRemoveFromCart={removeFromCart}
                 onUpdateQuantity={updateQuantity}
-                paypalClientId={paypalClientId}
             />
         </div>
     );
+};
+
+Shop.propTypes = {
+    products: PropTypes.arrayOf(PropTypes.shape())
+};
+
+Shop.defaultProps = {
+    products: []
 };
 
 export default Shop;

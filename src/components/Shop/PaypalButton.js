@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { PayPalButton } from 'react-paypal-button-v2';
 
 const { REACT_APP_PAYPAL_CLIENT_ID } = process.env;
 
-const currency_code = 'EUR';
-
 const PaypalButton = ({
     cart,
+    currency,
     total,
     subTotal,
-    currency,
     onSuccess,
     onError,
     onCancel,
-    paypalClientId,
     shippingCosts
 }) => {
     const items = cart.map((item) => {
@@ -23,7 +21,7 @@ const PaypalButton = ({
         return ({
             name,
             unit_amount: {
-                currency_code,
+                currency_code: currency,
                 value: price
             },
             quantity
@@ -34,15 +32,15 @@ const PaypalButton = ({
             createOrder={(data, actions) => actions.order.create({
                 purchase_units: [{
                     amount: {
-                        currency_code,
+                        currency_code: currency,
                         value: total,
                         breakdown: {
                             item_total: {
-                                currency_code,
+                                currency_code: currency,
                                 value: subTotal
                             },
                             shipping: {
-                                currency_code,
+                                currency_code: currency,
                                 value: shippingCosts
                             }
                         }
@@ -53,16 +51,22 @@ const PaypalButton = ({
             //   shipping_preference: "NO_SHIPPING" // default is "GET_FROM_FILE"
             // }
             })}
-            onSuccess={(details, data) => {
-                alert(`Transaction completed by ${details.payer.name.given_name}`);
-                console.log(cart);
-            }}
+            onSuccess={details => onSuccess(details)}
             options={{
-                clientId: paypalClientId,
-                currency: 'EUR'
+                clientId: REACT_APP_PAYPAL_CLIENT_ID,
+                currency
             }}
         />
     );
+};
+
+PaypalButton.propTypes = {
+    cart: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+    currency: PropTypes.string.isRequired,
+    onSuccess: PropTypes.func.isRequired,
+    total: PropTypes.number.isRequired,
+    shippingCosts: PropTypes.number.isRequired,
+    subTotal: PropTypes.number.isRequired,
 };
 
 export default PaypalButton;

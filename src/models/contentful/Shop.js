@@ -1,14 +1,18 @@
 import BaseModule from './BaseModule';
+import Product from './Product';
 
 export default class Shop extends BaseModule {
     className='Shop';
 
     constructor(data) {
         super(data);
-        this.paypalClientId = data.fields.paypalClientId;
+        const {
+            products
+        } = data.fields;
+        this.products = products.map(product => new Product(product));
     }
 
-    getPaypalClientId() {
-        return this.paypalClientId;
+    getProducts() {
+        return this.products;
     }
 }

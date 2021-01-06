@@ -316,7 +316,7 @@ class Root extends React.Component {
             case 'Shop':
                 return (
                     <Shop
-                        paypalClientId={item.getPaypalClientId()}
+                        products={item.getProducts()}
                     />
                 );
             case 'ScriptModule':

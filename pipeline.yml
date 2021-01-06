@@ -13,6 +13,8 @@ Parameters:
     Type: String
   EmailService:
     Type: String
+  PaypalClientId:
+    Type: String
   GitHubOauthToken:
     Type: String
     NoEcho: true
@@ -214,6 +216,7 @@ Resources:
                   REACT_APP_CONTENTFUL_API_KEY: ${ContentfulApiKey}
                   REACT_APP_CONTENTFUL_SPACE_ID: ${ContentfulSpaceId}
                   REACT_APP_NOTIFICATION_SERVICE_ENDPOINT: ${EmailService}
+                  REACT_APP_PAYPAL_CLIENT_ID: ${PaypalClientId}
               phases:
                 build:
                   commands:
