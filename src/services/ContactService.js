@@ -24,4 +24,25 @@ export default class ContactService {
         }
         return data;
     }
+
+    async sendPurchaseNotification(details, delivery) {
+        const response = await fetch(`${this.endpoint}/send/purchase-notification`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                details,
+                delivery
+            })
+        });
+        if (!response.ok) {
+            return null;
+        }
+        const data = await response.json();
+        if (!data) {
+            throw new Error('Something went wrong');
+        }
+        return data;
+    }
 }

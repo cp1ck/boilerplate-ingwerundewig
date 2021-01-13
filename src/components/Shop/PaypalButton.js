@@ -7,14 +7,14 @@ const { REACT_APP_PAYPAL_CLIENT_ID } = process.env;
 const PaypalButton = ({
     cart,
     currency,
+    delivery,
     total,
     subTotal,
     onSuccess,
     onError,
-    onCancel,
     shippingCosts
 }) => {
-    const items = cart.map((item) => {
+    const cartItems = cart.map((item) => {
         const {
             name, price, quantity
         } = item;
@@ -27,30 +27,32 @@ const PaypalButton = ({
             quantity
         });
     });
+    const onCreateOrder = (data, actions, items) => actions.order.create({
+        purchase_units: [{
+            amount: {
+                currency_code: currency,
+                value: total,
+                breakdown: {
+                    item_total: {
+                        currency_code: currency,
+                        value: subTotal
+                    },
+                    shipping: {
+                        currency_code: currency,
+                        value: shippingCosts
+                    }
+                }
+            },
+            items
+        }],
+        application_context: {
+            shipping_preference: (delivery === 'shipping' ? 'GET_FROM_FILE' : 'NO_SHIPPING')
+        }
+    });
     return (
         <PayPalButton
-            createOrder={(data, actions) => actions.order.create({
-                purchase_units: [{
-                    amount: {
-                        currency_code: currency,
-                        value: total,
-                        breakdown: {
-                            item_total: {
-                                currency_code: currency,
-                                value: subTotal
-                            },
-                            shipping: {
-                                currency_code: currency,
-                                value: shippingCosts
-                            }
-                        }
-                    },
-                    items
-                }],
-            // application_context: {
-            //   shipping_preference: "NO_SHIPPING" // default is "GET_FROM_FILE"
-            // }
-            })}
+            createOrder={(data, actions) => onCreateOrder(data, actions, cartItems)}
+            onError={error => onError(error)}
             onSuccess={details => onSuccess(details)}
             options={{
                 clientId: REACT_APP_PAYPAL_CLIENT_ID,
@@ -63,6 +65,8 @@ const PaypalButton = ({
 PaypalButton.propTypes = {
     cart: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     currency: PropTypes.string.isRequired,
+    delivery: PropTypes.string.isRequired,
+    onError: PropTypes.func.isRequired,
     onSuccess: PropTypes.func.isRequired,
     total: PropTypes.number.isRequired,
     shippingCosts: PropTypes.number.isRequired,

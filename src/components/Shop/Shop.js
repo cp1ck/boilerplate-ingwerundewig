@@ -62,6 +62,7 @@ const Shop = ({ products }) => {
             {
                 products && products.map(product => (
                     <Product
+                        key={product.getId()}
                         onAddToCart={addToCart}
                         product={product}
                     />
@@ -69,7 +70,7 @@ const Shop = ({ products }) => {
             }
             <Cart
                 cart={cart}
-                onClearCart={clearCart}
+                clearCart={clearCart}
                 onRemoveFromCart={removeFromCart}
                 onUpdateQuantity={updateQuantity}
             />
