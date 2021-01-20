@@ -1,9 +1,18 @@
 @import '../../styles/mixins';
 
 .c-product {
+    padding: 20px 0;
     &__image {
         margin: auto;
         display: flex;
+        padding-bottom: 20px;
+        @media(min-width: 768px) {
+            padding-bottom: 0;
+        }
+    }
+
+    &-details {
+        text-align: center;
     }
 
     &-details > *{
@@ -13,15 +22,17 @@
     &-controls {
         text-align: center;
         &__quantity-input {
-            vertical-align: top;
-            display: inline;
+            display: inline-block!important;
+            padding: 8px 10px;
+            font-size: 16px;
+            border: 2px solid transparent;
             width: 60px;
-            height: 47.1px;
             margin-right: 5px;
         }
 
         &__button {
-            display: inline!important;
+            display: inline-block!important;
+            -webkit-appearance: none;
         }
     }
 }

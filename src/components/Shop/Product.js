@@ -46,7 +46,6 @@ const Product = ({
                             value={quantity}
                             min="1"
                         />
-
                         <button
                             className="c-product-controls__button c-button c-button-light"
                             onClick={() => onAddToCart({ ...product, quantity })}

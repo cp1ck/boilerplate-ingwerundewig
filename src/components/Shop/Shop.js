@@ -16,10 +16,10 @@ const Shop = ({ products }) => {
             setCart([...cart, item]);
         } else {
             const newCart = [...cart];
-            const oldItem = cart[itemIndex];
-            const quantity = oldItem.quantity + item.quantity;
+            const oldItemEntry = cart[itemIndex];
+            const quantity = oldItemEntry.quantity + item.quantity;
             newCart[itemIndex] = {
-                ...oldItem,
+                ...oldItemEntry,
                 quantity
             };
             setCart(newCart);
@@ -39,18 +39,18 @@ const Shop = ({ products }) => {
         }
     };
 
-    const updateQuantity = (item, event) => {
+    const updateItemQuantity = (item, event) => {
         const itemIndex = cart.findIndex(element => element.id === item.id);
-        if (itemIndex === -1) return;
         const newQuantity = Number(event.target.value);
+        if (itemIndex === -1) return;
         if (newQuantity <= 0) {
             removeFromCart(item);
         } else {
             const newCart = [...cart];
-            const oldItem = cart[itemIndex];
+            const oldItemEntry = cart[itemIndex];
             const quantity = newQuantity;
             newCart[itemIndex] = {
-                ...oldItem,
+                ...oldItemEntry,
                 quantity
             };
             setCart(newCart);
@@ -72,7 +72,7 @@ const Shop = ({ products }) => {
                 cart={cart}
                 clearCart={clearCart}
                 onRemoveFromCart={removeFromCart}
-                onUpdateQuantity={updateQuantity}
+                onUpdateQuantity={updateItemQuantity}
             />
         </div>
     );
