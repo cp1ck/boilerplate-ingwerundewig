@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Cart from './Cart';
@@ -6,8 +6,18 @@ import Product from './Product';
 
 import './Shop.scss';
 
+const useSemiPersistentState = (key, initialState) => {
+    const [value, setValue] = React.useState(
+        JSON.parse(localStorage.getItem(key)) || initialState
+    );
+    useEffect(() => {
+        localStorage.setItem(key, JSON.stringify(value));
+    }, [value, key]);
+    return [value, setValue];
+};
+
 const Shop = ({ products }) => {
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useSemiPersistentState('cart', []);
 
     const addToCart = (item) => {
         if (item.quantity <= 0) return;
