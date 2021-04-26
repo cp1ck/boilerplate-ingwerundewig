@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-
 import { Row, Col } from 'react-bootstrap';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 import './Product.scss';
 
@@ -11,6 +11,7 @@ const Product = ({
     const {
         name, price, image, description, id
     } = product;
+    const rteDescription = documentToReactComponents(description);
     const [quantity, setQuantity] = useState(1);
 
     const onQuantityChange = (event) => {
@@ -33,7 +34,7 @@ const Product = ({
                             {`${name} - ${price} €`}
                         </h2>
                         <div className="c-product-details_text">
-                            {description}
+                            {rteDescription}
                         </div>
                     </div>
                     <form className="c-product-controls">
@@ -51,7 +52,7 @@ const Product = ({
                             onClick={() => onAddToCart({ ...product, quantity })}
                             type="button"
                         >
-                    In den Warenkorb
+                            In den Warenkorb
                         </button>
                     </form>
                 </Col>

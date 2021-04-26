@@ -1,8 +1,8 @@
 import BaseModule from './BaseModule';
 import BaseMedia from './BaseMedia';
 
-export default class Shop extends BaseModule {
-    className='Product';
+export default class Product extends BaseModule {
+    className = 'Product';
 
     constructor(data) {
         super(data);

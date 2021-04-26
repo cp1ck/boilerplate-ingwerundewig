@@ -5,6 +5,7 @@
     &__image {
         margin: auto;
         display: flex;
+        height: 100%;
         padding-bottom: 20px;
         @media(min-width: 768px) {
             padding-bottom: 0;
@@ -13,6 +14,9 @@
 
     &-details {
         text-align: center;
+        hr {
+            border: 5px;
+        }
     }
 
     &-details > *{
