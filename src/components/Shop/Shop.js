@@ -2,9 +2,14 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Cart from './Cart';
+import NoStockInfo from './NoStockInfo';
 import Product from './Product';
 
+import ContactService from '../../services/ContactService';
+
 import './Shop.scss';
+
+const contactService = new ContactService();
 
 const useSemiPersistentState = (key, initialState) => {
     const [value, setValue] = React.useState(
@@ -16,7 +21,10 @@ const useSemiPersistentState = (key, initialState) => {
     return [value, setValue];
 };
 
-const Shop = ({ products }) => {
+const Shop = ({
+    isInStock,
+    products
+}) => {
     const [cart, setCart] = useSemiPersistentState('cart', []);
 
     const addToCart = (item) => {
@@ -67,6 +75,15 @@ const Shop = ({ products }) => {
         }
     };
 
+    if (!isInStock) {
+        return (
+            <div className="c-shop">
+                <NoStockInfo
+                    contactService={contactService}
+                />
+            </div>
+        );
+    }
     return (
         <div className="c-shop">
             {
@@ -81,6 +98,7 @@ const Shop = ({ products }) => {
             <Cart
                 cart={cart}
                 clearCart={clearCart}
+                contactService={contactService}
                 onRemoveFromCart={removeFromCart}
                 onUpdateQuantity={updateItemQuantity}
             />

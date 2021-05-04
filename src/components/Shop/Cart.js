@@ -1,10 +1,9 @@
+/* eslint-disable linebreak-style */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { isMobile } from 'react-device-detect';
 
 import PaypalButton from './PaypalButton';
-
-import ContactService from '../../services/ContactService';
 
 import './Cart.scss';
 
@@ -21,10 +20,8 @@ const shippingOptions = [
     }
 ];
 
-const contactService = new ContactService();
-
 const Cart = ({
-    cart, clearCart, onRemoveFromCart, onUpdateQuantity
+    cart, clearCart, contactService, onRemoveFromCart, onUpdateQuantity
 }) => {
     const [delivery, setDelivery] = useState('pickup');
     const [oldEnough, setOldEnough] = useState(false);
@@ -61,7 +58,7 @@ const Cart = ({
         return (
             <div className="c-cart">
                 <h2>Warenkorb</h2>
-                { isMobile
+                {isMobile
                     ? (
                         <table className="c-cart-table--mobile">
                             {cart.map(item => (
@@ -99,7 +96,7 @@ const Cart = ({
                                             type="button"
                                             onClick={() => onRemoveFromCart(item)}
                                         >
-Entfernen
+                                            Entfernen
                                         </button>
                                     </tr>
                                 </>
@@ -140,7 +137,7 @@ Entfernen
                                                 type="button"
                                                 onClick={() => onRemoveFromCart(item)}
                                             >
-Entfernen
+                                                Entfernen
                                             </button>
 
                                         </td>
@@ -194,22 +191,22 @@ Entfernen
                             onChange={event => onCheckboxChange(event)}
                             type="checkbox"
                         />
-Ich bin über 18 Jahre alt.
+                        Ich bin über 18 Jahre alt.
                     </label>
                 </div>
                 {oldEnough
-                && (
-                    <PaypalButton
-                        cart={cart}
-                        currency="EUR"
-                        delivery={delivery}
-                        onError={handlePaypalError}
-                        onSuccess={handlePaymentSuccess}
-                        subTotal={subTotal}
-                        total={total}
-                        shippingCosts={shippingCosts}
-                    />
-                )
+                    && (
+                        <PaypalButton
+                            cart={cart}
+                            currency="EUR"
+                            delivery={delivery}
+                            onError={handlePaypalError}
+                            onSuccess={handlePaymentSuccess}
+                            subTotal={subTotal}
+                            total={total}
+                            shippingCosts={shippingCosts}
+                        />
+                    )
                 }
             </div>
         );
@@ -219,12 +216,12 @@ Ich bin über 18 Jahre alt.
             <div className="c-shop-feedback">
                 {
                     paypalError
-                && (
-                    <div className="c-shop-feedback__error-paypal">
-                        <h2>Fehler bei Paypal.</h2>
-                        <div>Irgendetwas ist schiefgegangen. Bitte versuche es erneut.</div>
-                    </div>
-                )
+                    && (
+                        <div className="c-shop-feedback__error-paypal">
+                            <h2>Fehler bei Paypal.</h2>
+                            <div>Irgendetwas ist schiefgegangen. Bitte versuche es erneut.</div>
+                        </div>
+                    )
                 }
                 {
                     shoppingSuccess && (
@@ -233,7 +230,7 @@ Ich bin über 18 Jahre alt.
                             {mailError
                                 ? (
                                     <div>
-Fehler beim Senden der Bestellbestätigung. Bitte schreib uns eine Email an
+                                        Fehler beim Senden der Bestellbestätigung. Bitte schreib uns eine Email an
                                         <a href="mailto: shop@ingwerundewig.de"> shop@ingwerundewig.de</a>
                                     </div>
                                 )
@@ -253,6 +250,7 @@ Fehler beim Senden der Bestellbestätigung. Bitte schreib uns eine Email an
 Cart.propTypes = {
     cart: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     clearCart: PropTypes.func.isRequired,
+    contactService: PropTypes.func.isRequired,
     onRemoveFromCart: PropTypes.func.isRequired,
     onUpdateQuantity: PropTypes.func.isRequired,
 };

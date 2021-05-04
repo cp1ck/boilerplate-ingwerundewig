@@ -7,7 +7,9 @@ export default class Product extends BaseModule {
     constructor(data) {
         super(data);
         const {
-            price, image, description
+            description,
+            image,
+            price,
         } = data.fields;
         this.price = price;
         this.image = new BaseMedia(image);
@@ -25,4 +27,5 @@ export default class Product extends BaseModule {
     getDescription() {
         return this.description;
     }
+
 }

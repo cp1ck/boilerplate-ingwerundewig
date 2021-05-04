@@ -1,0 +1,11 @@
+.c-no-stock-info__form-submit {
+    &:disabled,
+    &:disabled:hover,
+    &[disabled],
+    &[disabled]:hover {
+        border-color: #ced4da;
+        color: #ced4da;
+        background-color: unset;
+        box-shadow: none;
+    }
+}

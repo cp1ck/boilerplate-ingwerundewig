@@ -11,6 +11,7 @@ import ContactService from '../../services/ContactService';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './ContactModule.scss';
+import '../Button/Button.scss';
 
 
 class ContactModule extends React.Component {
@@ -175,7 +176,7 @@ class ContactModule extends React.Component {
                             </FormGroup>
                             <FormGroup className="c-contact__form-group">
                                 <button
-                                    className="c-button c-button-dark c-contact__form-submit"
+                                    className="c-button c-button-light c-contact__form-submit"
                                     disabled={!isValid}
                                     onClick={e => this.handleSubmit(e, emailRecipient)}
                                     type="submit"

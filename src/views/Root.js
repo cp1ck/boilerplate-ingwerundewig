@@ -316,6 +316,7 @@ class Root extends React.Component {
             case 'Shop':
                 return (
                     <Shop
+                        isInStock={item.getIsInStock()}
                         products={item.getProducts()}
                     />
                 );
@@ -389,8 +390,8 @@ class Root extends React.Component {
                         theme={cookieConsent.getTheme()}
                     />
                 ) : (
-                    <CookieConsentTool />
-                )}
+                        <CookieConsentTool />
+                    )}
                 {modules && modules.map(m => m)}
                 {footer && (
                     <Footer
