@@ -8,7 +8,7 @@ export default class ContactService {
     async sendMessage(
         emailRecipient, form
     ) {
-        const response = await fetch(`${this.endpoint}/send`, {
+        const response = await fetch(`${this.endpoint}/contact`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -18,6 +18,9 @@ export default class ContactService {
                 form
             })
         });
+        if (!response.ok) {
+            return null;
+        }
         const data = await response.json();
         if (!data) {
             throw new Error('Something went wrong');
@@ -26,7 +29,7 @@ export default class ContactService {
     }
 
     async sendPurchaseNotification(details, delivery) {
-        const response = await fetch(`${this.endpoint}/send/purchase-notification`, {
+        const response = await fetch(`${this.endpoint}/purchase-notification`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -34,6 +37,26 @@ export default class ContactService {
             body: JSON.stringify({
                 details,
                 delivery
+            })
+        });
+        if (!response.ok) {
+            return null;
+        }
+        const data = await response.json();
+        if (!data) {
+            throw new Error('Something went wrong');
+        }
+        return data;
+    }
+
+    async subscribe(email) {
+        const response = await fetch(`${this.endpoint}/subscribe`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email
             })
         });
         if (!response.ok) {
