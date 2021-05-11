@@ -8,8 +8,8 @@ import {
     Row,
 } from 'react-bootstrap';
 
-import './NoStockInfo.scss';
 import '../Button/Button.scss';
+import './NoStockInfo.scss';
 
 const NoStock = ({ contactService }) => {
     const [email, setEmail] = useState('');

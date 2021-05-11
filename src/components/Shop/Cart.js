@@ -16,7 +16,7 @@ const shippingOptions = [
     {
         id: 1,
         name: 'shipping',
-        label: 'Versand: 5,90€'
+        label: 'Versand: 6€'
     }
 ];
 
@@ -53,7 +53,7 @@ const Cart = ({
         if (shoppingSuccess) setShoppingSuccess(false);
         if (mailError) setMailError(false);
         const subTotal = cart.reduce((acc, item) => item.price * item.quantity, 0);
-        const shippingCosts = delivery === 'shipping' ? 5.9 : 0;
+        const shippingCosts = delivery === 'shipping' ? 6 : 0;
         const total = subTotal + shippingCosts;
         return (
             <div className="c-cart">

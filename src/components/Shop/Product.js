@@ -21,14 +21,14 @@ const Product = ({
     return (
         <div className="c-product">
             <Row>
-                <Col md="4">
+                <Col md="6">
                     <img
                         alt={image.getAlt()}
                         className="c-product__image"
                         src={image.getImageUrl()}
                     />
                 </Col>
-                <Col md="8">
+                <Col md="6">
                     <div className="c-product-details">
                         <h2 className="c-product-details__title">
                             {`${name} - ${price} €`}
