@@ -52,7 +52,7 @@ const Cart = ({
     if (cart && cart.length > 0) {
         if (shoppingSuccess) setShoppingSuccess(false);
         if (mailError) setMailError(false);
-        const subTotal = cart.reduce((acc, item) => item.price * item.quantity, 0);
+        const subTotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
         const shippingCosts = delivery === 'shipping' ? 6 : 0;
         const total = subTotal + shippingCosts;
         return (
