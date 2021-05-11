@@ -184,6 +184,11 @@ const Cart = ({
                     </tbody>
                 </table>
                 <div className="c-cart-validations">
+                    <div className="c-cart-validations__agbs">
+                        Es gelten unsere
+                        <a href="agb"> Allgemeinen Geschäftsbedingungen</a>
+                        .
+                    </div>
                     <label htmlFor="age-verification">
                         <input
                             checked={oldEnough}
