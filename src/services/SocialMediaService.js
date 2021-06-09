@@ -4,27 +4,27 @@ export default class SocialMediaService {
         this.endpoint = endpoint;
     }
 
-    async fetchInstagramFeed(username) {
-        const result = await fetch(`https://www.instagram.com/${username}/?__a=1`);
+    async fetchInstagramFeed(token) {
+        const result = await fetch(`https://graph.instagram.com/me/media?access_token=${token}&fields=media_url,media_type,caption,permalink,children{id,media_url, media_type, permalink}`);
         const json = await result.json();
-        const { edges } = json.graphql.user.edge_owner_to_timeline_media;
+        const { data } = json;
         const nicePost = (media) => {
             const post = {
                 // caption: media.edge_media_to_caption.edge[0].text,
-                src: media.display_url,
-                id: media.shortcode,
-                isVideo: media.is_video,
+                src: media.media_url,
+                id: media.id,
+                isVideo: media.media_type === 'VIDEO',
+                permalink: media.permalink
             };
             return post;
         };
 
-        const posts = edges.map((item) => {
-            const media = item.node;
-            if (media.edge_sidecar_to_children) {
-                return media.edge_sidecar_to_children.edges
-                    .map(element => nicePost(element.node));
+        const posts = data.map((item) => {
+            if (item.media_type === 'CAROUSEL_ALBUM') {
+                return item.children.data
+                    .map(element => nicePost(element));
             }
-            return [nicePost(media)];
+            return [nicePost(item)];
         });
         return posts;
     }
