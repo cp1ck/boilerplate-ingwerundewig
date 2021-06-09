@@ -22,18 +22,20 @@ const Product = ({
         <div className="c-product">
             <Row>
                 <Col md="6">
-                    <img
-                        alt={image.getAlt()}
-                        className="c-product__image"
-                        src={image.getImageUrl()}
-                    />
+                    <div className="c-product__img-container">
+                        <img
+                            alt={image.getAlt()}
+                            className={`c-product__image img-${id}`}
+                            src={image.getImageUrl()}
+                        />
+                    </div>
                 </Col>
                 <Col md="6">
                     <div className="c-product-details">
                         <h2 className="c-product-details__title">
                             {`${name} - ${price} €`}
                         </h2>
-                        <div className="c-product-details_text">
+                        <div className="c-product-details__text">
                             {rteDescription}
                         </div>
                     </div>

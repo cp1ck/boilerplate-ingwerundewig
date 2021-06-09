@@ -23,3 +23,20 @@ $slider-icon-color-secondary: #dfdfdf;
 $module-spacing-breakpoint: 768px;
 $module-spacing-mobile: 15px;
 $module-spacing-desktop: 30px;
+
+/* Customized heights of product images*/
+
+.img-lTOxWq5N2eTXQlcVWpl20 {
+    height: 260px;
+    @media(min-width: 768px) {
+        height: 360px;
+    }
+    
+}
+
+.img-6Zb6ujTvG9wXs2nbhP0CWf {
+    height:200px;
+    @media(min-width: 768px) {
+        height: 220px;
+    }
+}
