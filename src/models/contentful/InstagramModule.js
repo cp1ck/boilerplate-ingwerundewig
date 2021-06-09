@@ -6,10 +6,10 @@ export default class InstagramModule extends BaseModule {
 
     constructor(entry) {
         super(entry);
-        this.username = entry.fields.extension.value;
+        this.token = entry.fields.extension.value;
     }
 
-    getUsername() {
-        return this.username;
+    getToken() {
+        return this.token;
     }
 }

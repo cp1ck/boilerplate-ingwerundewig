@@ -248,7 +248,7 @@ class Root extends React.Component {
                 return (
                     <InstagramModule
                         className={columnModules ? 'no-spacing' : ''}
-                        fetchInstagramFeed={() => this.fetchInstagramFeed(item.getUsername())}
+                        fetchInstagramFeed={() => this.fetchInstagramFeed(item.getToken())}
                         key={item.getId()}
                     />
                 );
@@ -384,8 +384,8 @@ class Root extends React.Component {
                         theme={cookieConsent.getTheme()}
                     />
                 ) : (
-                    <CookieConsentTool />
-                )}
+                        <CookieConsentTool />
+                    )}
                 {modules && modules.map(m => m)}
                 {footer && (
                     <Footer
