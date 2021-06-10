@@ -8,7 +8,7 @@ export default class ContactService {
     async sendMessage(
         emailRecipient, form
     ) {
-        const response = await fetch(`${this.endpoint}/send`, {
+        const response = await fetch(`${this.endpoint}/contact`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
