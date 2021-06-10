@@ -61,7 +61,7 @@ const CookieConsentTool = ({
                     />
                     Statisik
                 </label>
-                <label className="c-cookie__marketing" htmlFor="marketing">
+                {/* <label className="c-cookie__marketing" htmlFor="marketing">
                     <input
                         className="c-cookie__checkbox"
                         type="checkbox"
@@ -70,7 +70,7 @@ const CookieConsentTool = ({
                         onChange={() => setMarketing(!marketing)}
                     />
                     Marketing
-                </label>
+                </label> */}
             </div>
         </CookieConsent>
     );
