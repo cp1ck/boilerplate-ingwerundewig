@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable linebreak-style */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
@@ -255,7 +256,7 @@ const Cart = ({
 Cart.propTypes = {
     cart: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     clearCart: PropTypes.func.isRequired,
-    contactService: PropTypes.func.isRequired,
+    contactService: PropTypes.object.isRequired,
     onRemoveFromCart: PropTypes.func.isRequired,
     onUpdateQuantity: PropTypes.func.isRequired,
 };

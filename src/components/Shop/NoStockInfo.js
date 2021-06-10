@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -86,6 +87,10 @@ const NoStock = ({ contactService }) => {
         </div >
     );
 
+};
+
+NoStock.propTypes = {
+    contactService: PropTypes.object.isRequired,
 };
 
 export default NoStock;
