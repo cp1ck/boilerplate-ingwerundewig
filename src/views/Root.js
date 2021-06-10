@@ -247,7 +247,7 @@ class Root extends React.Component {
                 return (
                     <InstagramModule
                         className={columnModules ? 'no-spacing' : ''}
-                        fetchInstagramFeed={() => this.fetchInstagramFeed(item.getUsername())}
+                        fetchInstagramFeed={() => this.fetchInstagramFeed(item.getToken())}
                         key={item.getId()}
                     />
                 );
