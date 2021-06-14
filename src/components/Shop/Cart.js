@@ -17,7 +17,7 @@ const shippingOptions = [
     {
         id: 1,
         name: 'shipping',
-        label: 'Versand: 6€'
+        label: 'Versand: 6 €'
     }
 ];
 
