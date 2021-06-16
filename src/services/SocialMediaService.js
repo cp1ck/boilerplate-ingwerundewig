@@ -1,32 +1,21 @@
 /* eslint-disable no-console */
+const { REACT_APP_INSTAGRAM_SERVICE_ENDPOINT } = process.env;
 export default class SocialMediaService {
     constructor(endpoint) {
         this.endpoint = endpoint;
     }
 
-    async fetchInstagramFeed(token) {
-        const result = await fetch(`https://graph.instagram.com/me/media?access_token=${token}&fields=media_url,media_type,caption,permalink,children{id,media_url, media_type, permalink}`);
-        const json = await result.json();
-        const { data } = json;
-        const nicePost = (media) => {
-            const post = {
-                // caption: media.edge_media_to_caption.edge[0].text,
-                src: media.media_url,
-                id: media.id,
-                isVideo: media.media_type === 'VIDEO',
-                permalink: media.permalink
-            };
-            return post;
-        };
-
-        const posts = data.map((item) => {
-            if (item.media_type === 'CAROUSEL_ALBUM') {
-                return item.children.data
-                    .map(element => nicePost(element));
-            }
-            return [nicePost(item)];
-        });
-        return posts;
+    async fetchInstagramFeed() {
+        try {
+            const response = await fetch(REACT_APP_INSTAGRAM_SERVICE_ENDPOINT, {
+                method: 'GET'
+            });
+            const json = await response.json();
+            return json;
+        } catch (error) {
+            console.error('Error while fetching insta feed', error);
+            return null;
+        }
     }
 
     async getSocialFeeds() {
